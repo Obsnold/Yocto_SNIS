@@ -1,0 +1,32 @@
+From e650d4bf53f950d8f539ca9f77d13b82e192594b Mon Sep 17 00:00:00 2001
+From: Terry <t2tritton@gmail.com>
+Date: Wed, 8 Sep 2021 16:16:52 +0800
+Subject: [PATCH] remove openscad stuff as yocto build is always tring to build
+ and complaining openscad is not installed
+
+---
+ Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 295a2620..34b57612 100644
+--- a/Makefile
++++ b/Makefile
+@@ -697,7 +697,6 @@ SERVERLINK=$(ECHO) '  LINK' $@ && $(CC) ${MYCFLAGS} -o $@ ${SERVEROBJS} ${SERVER
+ MULTIVERSELINK=$(ECHO) '  LINK' $@ && $(CC) ${MYCFLAGS} -o $@ ${MULTIVERSEOBJS} ${MULTIVERSELIBS} $(LDFLAGS)
+ NEBULANOISELINK=$(ECHO) '  LINK' $@ && $(CC) ${MYCFLAGS} -o $@ ${NEBULANOISEOBJS} ${NEBULANOISELIBS} $(LDFLAGS)
+ GENERATE_SKYBOX_LINK=$(ECHO) '  LINK' $@ && $(CC) ${MYCFLAGS} -o $@ ${GENERATE_SKYBOX_OBJS} ${GENERATE_SKYBOX_LIBS} $(LDFLAGS)
+-OPENSCAD=$(ECHO) '  OPENSCAD' $< && openscad -o $@ $<
+ EXTRACTSCADPARAMS=$(ECHO) '  EXTRACT THRUST PARAMS' $@ && $(AWK) -f extract_scad_params.awk $< > $@
+ EXTRACTDOCKINGPORTS=$(ECHO) '  EXTRACT DOCKING PORTS' $@ && $(AWK) -f extract_docking_ports.awk $< > $@
+ 
+@@ -783,9 +782,6 @@ $(OD)/material.o : material.c Makefile ${ODT}
+ $(OD)/shader.o : shader.c Makefile ${ODT}
+ 	$(Q)$(COMPILE)
+ 
+-%.stl:	%.scad
+-	$(Q)$(OPENSCAD)
+-
+ %.scad_params.h: %.scad
+ 	$(Q)$(EXTRACTSCADPARAMS)
+ 

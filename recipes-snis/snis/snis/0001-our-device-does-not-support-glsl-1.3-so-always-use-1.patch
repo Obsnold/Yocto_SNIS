@@ -1,0 +1,50 @@
+From 946a7dad0d5764fbaaa5559e3072668eece8289f Mon Sep 17 00:00:00 2001
+From: Terry <t2tritton@gmail.com>
+Date: Thu, 9 Sep 2021 14:02:18 +0800
+Subject: [PATCH] our device does not support glsl 1.3 so always use 1.2
+
+---
+ graph_dev_opengl.c | 29 +++++++++--------------------
+ 1 file changed, 9 insertions(+), 20 deletions(-)
+
+diff --git a/graph_dev_opengl.c b/graph_dev_opengl.c
+index 33c82637..67885b37 100644
+--- a/graph_dev_opengl.c
++++ b/graph_dev_opengl.c
+@@ -3668,27 +3668,16 @@ static void setup_smaa_effect_shader(const char *basename, struct graph_dev_gl_f
+ 
+ 	const char *vert_header;
+ 	const char *frag_header;
+-	if (GLEW_VERSION_3_0) {
+-		vert_header =
+-			"#version 130\n"
+-			"#define INCLUDE_VS 1\n"
+-			"#define SMAA_GLSL_3\n";
+-		frag_header =
+-			"#version 130\n"
+-			"#define INCLUDE_FS 1\n"
+-			"#define SMAA_GLSL_3\n";
+-	} else {
+-		/* fall back to OGL 2.1 */
+-		vert_header =
+-			"#version 120\n"
+-			"#define INCLUDE_VS 1\n"
+-			"#define SMAA_GLSL_2\n";
+-		frag_header =
+-			"#version 120\n"
+-			"#define INCLUDE_FS 1\n"
+-			"#define SMAA_GLSL_2\n";
+-	}
+ 
++	vert_header =
++		"#version 120\n"
++		"#define INCLUDE_VS 1\n"
++		"#define SMAA_GLSL_2\n";
++	frag_header =
++		"#version 120\n"
++		"#define INCLUDE_FS 1\n"
++		"#define SMAA_GLSL_2\n";
++
+ 	const char *filenames[] = { "smaa-high.shader", "SMAA.hlsl", shader_filename };
+ 
+ 	maybe_unload_shader(&shader->meta, &shader->program_id);

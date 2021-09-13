@@ -1,0 +1,21 @@
+From 901634a49b7e39079765841c0f2288ac1968218e Mon Sep 17 00:00:00 2001
+From: Terry <t2tritton@gmail.com>
+Date: Wed, 8 Sep 2021 14:40:10 +0800
+Subject: [PATCH] disabled voice chat
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 2180352b..295a2620 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ # To compile with voice chat, WITHVOICECHAT=yes,
+ # for no voice chat, make WITHVOICECHAT=no
+-WITHVOICECHAT=yes
++WITHVOICECHAT=no
+ USE_SNIS_XWINDOWS_HACKS=1
+ USE_CUSTOM_STRLCPY=0
+ PKG_CONFIG?=pkg-config

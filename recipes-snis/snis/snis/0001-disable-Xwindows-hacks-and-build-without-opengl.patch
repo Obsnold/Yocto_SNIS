@@ -1,0 +1,31 @@
+From fa0e80a9be8951855aa6b8c80fbf019084c6d6a9 Mon Sep 17 00:00:00 2001
+From: Terry <t2tritton@gmail.com>
+Date: Thu, 9 Sep 2021 14:52:39 +0800
+Subject: [PATCH] disable Xwindows hacks and build without opengl
+
+---
+ Makefile | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 34b57612..8ddcae16 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,8 @@
+ # To compile with voice chat, WITHVOICECHAT=yes,
+ # for no voice chat, make WITHVOICECHAT=no
+ WITHVOICECHAT=no
+-USE_SNIS_XWINDOWS_HACKS=1
++USE_SNIS_XWINDOWS_HACKS=0
++
+ USE_CUSTOM_STRLCPY=0
+ PKG_CONFIG?=pkg-config
+ 
+@@ -661,6 +662,7 @@ MYCFLAGS=-DPREFIX=${PREFIX} ${DEBUGFLAG} ${PROFILEFLAG} ${OPTIMIZEFLAG} ${UBSANF
+ 	--pedantic -Wall ${STOP_ON_WARN} -pthread -std=gnu99 ${RDYNAMIC} \
+ 	-Wno-extended-offsetof -Wno-gnu-folding-constant $(CFLAGS) -Wvla \
+ 	-DUSE_SNIS_XWINDOWS_HACKS=${USE_SNIS_XWINDOWS_HACKS} -fno-common \
++	\
+ 	-DUSE_CUSTOM_STRLCPY=${USE_CUSTOM_STRLCPY}
+ VORBISFLAGS:=$(subst -I,-isystem ,$(shell $(PKG_CONFIG) --cflags vorbisfile))
+ 

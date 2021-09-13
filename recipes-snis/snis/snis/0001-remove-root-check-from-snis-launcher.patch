@@ -1,0 +1,25 @@
+From eb483453236587975a99350e5067e3510e711d3c Mon Sep 17 00:00:00 2001
+From: Terry <t2tritton@gmail.com>
+Date: Thu, 9 Sep 2021 12:40:35 +0800
+Subject: [PATCH] remove root check from snis launcher
+
+---
+ snis_launcher | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/snis_launcher b/snis_launcher
+index dfe0f4f0..e6f78336 100755
+--- a/snis_launcher
++++ b/snis_launcher
+@@ -1,11 +1,5 @@
+ #!/bin/sh
+ 
+-if [ "$(id -u)" = "0" ]
+-then
+-	echo "You are root. Do not run this script as root." 1>&2
+-	exit 1
+-fi
+-
+ # Hack this in for now
+ PREFIX=.
+ 

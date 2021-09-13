@@ -1,0 +1,29 @@
+From d02098beef4ad6c4f8dafafa2c9b319939c9624c Mon Sep 17 00:00:00 2001
+From: Terry <t2tritton@gmail.com>
+Date: Wed, 8 Sep 2021 15:03:04 +0800
+Subject: [PATCH] remove root check
+
+---
+ rootcheck.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rootcheck.c b/rootcheck.c
+index d84c1641..cc405af2 100644
+--- a/rootcheck.c
++++ b/rootcheck.c
+@@ -27,13 +27,13 @@
+ 
+ void refuse_to_run_as_root(const char *programname)
+ {
+-	uid_t id;
++	/*uid_t id;
+ 
+ 	id = geteuid();
+ 
+ 	if (id == 0) {
+ 		fprintf(stderr, "%s: You're running this as root?  I don't think so.\n", programname);
+ 		exit(1);
+-	}
++	}*/
+ }
+ 
