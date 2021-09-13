@@ -5,8 +5,6 @@ I decided to create a layer for [Space Nerds In Space](https://github.com/smcame
 
 The layer is very basic and was configured to work with Dunfell for a system based on the rk3126 chip. I haven't tested on anything else so can't gaurantee it works.
 
-this layer includes a tar ball of the resources needed to run SNIS as it can take a long time to download them normally. If you want to get the latest resources make the following change:
-
 The step: 
 
     do_configure () {  
